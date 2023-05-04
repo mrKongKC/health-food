@@ -1,7 +1,17 @@
 package controller
 
-import "fmt"
+import (
+	"github.com/mrKongKC/health-food/services"
+)
 
-func FirstController(){
-	fmt.Println("hello")
+func InitializeDB() {
+	services.ConnectDB()
+}
+
+func GetAllHeathFoods(y string) (string, any) {
+	if y == "" {
+		status, value := services.GetAllHeathFoods()
+		return status, value
+	}
+	return "not", 0
 }
